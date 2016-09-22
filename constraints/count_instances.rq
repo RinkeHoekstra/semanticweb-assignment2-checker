@@ -1,0 +1,21 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?i WHERE {
+  ?i a ?c .
+  MINUS {
+    ?i a rdfs:Class .
+  }
+  MINUS {
+    ?i a owl:Class .
+  }
+  MINUS {
+    ?i a rdf:Property .
+  }
+  MINUS {
+    ?i rdfs:subClassOf|^rdfs:subClassOf [] .
+  }
+  MINUS {
+    [] rdfs:domain|rdfs:range ?i .
+  }
+}

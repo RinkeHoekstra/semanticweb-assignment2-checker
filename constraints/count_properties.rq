@@ -1,0 +1,9 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?p WHERE {
+  { ?p a rdf:Property . }
+UNION
+  { ?p rdfs:subPropertyOf|^rdfs:subPropertyOf [] . }
+UNION
+  { ?p rdfs:domain|rdfs:range [] .}
+}
